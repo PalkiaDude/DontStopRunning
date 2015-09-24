@@ -1,5 +1,5 @@
 <?php
-namespace PalkiaDude/Dead-End;
+namespace Dead-End;
 use pocketmine\Server;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
@@ -16,6 +16,8 @@ class Main extends PluginBase implements Listener{
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->getLogger()->info(TextFormat::GREEN . "Dead-End Minigame by PalkiaDude!");
      }
+
+if($sender->getLevel()->getFolderName()==="world"&&$cmd->getName()->"setArenaWorld")
 
 public function onPlayerMove(PlayerMoveEvent $event){
         $player = $event->getPlayer();
