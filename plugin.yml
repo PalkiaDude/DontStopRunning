@@ -6,5 +6,5 @@ main: src/Dead-End/Main
 description: A minigame where the floor below you is disappearing
 
 commands:
-    activateGame:
+    setArenaWorld:
         description: "Activates Dead-End in which world you are"
