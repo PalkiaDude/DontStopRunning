@@ -2,5 +2,9 @@ name: Dead-End
 author: Palkiadude
 version:1.0
 api:[1.13.0]
-main: src/PalkiaDude
-description:
+main: src/Dead-End/Main
+description: A minigame where the floor below you is disappearing
+
+commands:
+    activateGame:
+        description: "Activates Dead-End in which world you are"
