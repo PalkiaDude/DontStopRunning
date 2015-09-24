@@ -16,7 +16,8 @@ class Main extends PluginBase implements Listener{
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->getLogger()->info(TextFormat::GREEN . "Dead-End Minigame by PalkiaDude!");
      }
-
+public function onCommand(CommandSender $sender, Command $command, $label,
+if(strtolower($command->getName()) ==="setArenaWorld"
 if($sender->getLevel()->getFolderName()==="world"&&$cmd->getName()->"setArenaWorld")
 
 public function onPlayerMove(PlayerMoveEvent $event){
