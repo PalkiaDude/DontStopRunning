@@ -8,6 +8,5 @@ description: A minigame where the floor below you is disappearing
 commands:
   setArenaWorld:
      description:"Sets Arena World.
-     usage: /setArenaWorld
-     permission: Dead-End.command
+    
     
