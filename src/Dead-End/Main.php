@@ -8,8 +8,6 @@ use pocketmine\math\Vector3;
 use pocketmine\block\Block;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\Player;
-
-
 class Main extends PluginBase implements Listener{
 
      public function onEnable(){
