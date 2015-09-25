@@ -3,10 +3,10 @@ author: Palkiadude
 version: 1.0
 api: [1.13.0]
 main: src/Dead-End/Main
-description: A minigame where the floor below you is disappearing
+description: A minigame where the floor below you is disappearing.
 
 commands:
   setArenaWorld:
-     description:"Sets Arena World.
+     description:"Sets Arena World."
     
     
