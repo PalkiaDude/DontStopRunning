@@ -29,3 +29,4 @@ class Main extends PluginBase implements Listener{
             $level->setBlock($pos, 0);
         }
      }
+}
