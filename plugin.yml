@@ -2,7 +2,7 @@ name: Dead-End
 author: Palkiadude
 version: 1.0
 api: [1.13.0]
-main: Dead-End/Main
+main: Dead-End\Main
 description: A minigame where the floor below you is disappearing.
 
 commands:
