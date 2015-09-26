@@ -1,5 +1,5 @@
 <?php
-namespace Dead-End;
+namespace DeadEnd;
 use pocketmine\Server;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
