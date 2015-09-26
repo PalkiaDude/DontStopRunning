@@ -1,5 +1,5 @@
 <?php
-namespace PalkiaDude/DeadEnd;
+namespace PalkiaDude\\DeadEnd;
 use pocketmine\Server;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
