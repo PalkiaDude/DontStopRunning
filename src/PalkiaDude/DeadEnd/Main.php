@@ -19,7 +19,7 @@ class Main extends PluginBase implements Listener{
 public function onCommand(CommandSender $sender, Command $command, $label,array $args){
     if(strtolower($command->getName()) ==="setArenaWorld"){
        if($sender->getLevel()->getFolderName()==="world"&&$cmd->getName()->$command);
-    }
+     }
      public function onPlayerMove(PlayerMoveEvent $event){
         $player = $event->getPlayer();
         $level = $player->getLevel();
