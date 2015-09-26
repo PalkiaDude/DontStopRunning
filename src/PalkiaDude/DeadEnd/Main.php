@@ -9,7 +9,7 @@ use pocketmine\block\Block;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\Player;
 use pocketmine\plugin\Plugin;
-use pocketmine\level\Position
+use pocketmine\level\Position;
 class Main extends PluginBase implements Listener{
 
      public function onEnable(){
