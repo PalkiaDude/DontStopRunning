@@ -16,6 +16,7 @@ class Main extends PluginBase implements Listener{
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->getLogger()->info(TextFormat::GREEN . "Dead-End Minigame by PalkiaDude!"
      }
+     }
      public function onPlayerMove(PlayerMoveEvent $event){
         $player = $event->getPlayer();
         $level = $player->getLevel();
