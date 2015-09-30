@@ -118,7 +118,8 @@ break;
 }
    public function onDeath(PlayerDeathEvent $event){
    $event->getPlayer()->removePlayer
-                                   }
+   $player->sendMessage(TextFormat::RED"You are out of the game!")
+                                   
            }
 }
    
