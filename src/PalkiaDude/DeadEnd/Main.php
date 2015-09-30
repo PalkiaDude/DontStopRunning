@@ -47,12 +47,14 @@ class Main extends PluginBase implements Listener{
     public function removePlayer(Player $player){
         unset($this->players[$player->getName()]);
     }
-}     public function onPlayerMove(PlayerMoveEvent $event){
+    public function onPlayerMove(PlayerMoveEvent $event){
         $player = $event->getPlayer();
         $level = $player->getLevel();
         $pos = new Vector3($player->getFloorX(), $player->getFloorY() - 1, $player->getFloorZ());
         if($this->isPlayer($player)){
             $level->setBlock($pos, 0);
+}
+}
      public function setGame(PlayerInteractEvent $event){
 $player=$event->getPlayer();
 $username=$player->getName();
