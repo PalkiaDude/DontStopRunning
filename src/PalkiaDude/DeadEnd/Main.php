@@ -10,6 +10,8 @@ use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\Player;
 use pocketmine\plugin\Plugin;
 use pocketmine\level\Position;
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
 class Main extends PluginBase implements Listener{
 
      public function onEnable(){
