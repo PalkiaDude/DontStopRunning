@@ -118,5 +118,8 @@ break;
 }
    public function onDeath(PlayerDeathEvent $event){
    $event->getPlayer()->removePlayer
+                                   }
+           }
+}
    
 
