@@ -26,7 +26,7 @@ public function onLobbyJoin(PlayerJoinEvent $event){
   $min = $this->getConfig()->get("min-players");
    $max = $this->getConfig()->get("max-players");
   $x = $this->getConfig()->get("seconds");
-  $done $this->getServer()->getScheduler()->scheduleRepeatingTask($timer, 300);
+  $done = $this->getServer()->getScheduler()->scheduleRepeatingTask($timer, 300);
   if($players >= $min){  
    $timer = new Timer($this);
    $h = $this->getServer()->getScheduler()->scheduleRepeatingTask($timer, 20);
