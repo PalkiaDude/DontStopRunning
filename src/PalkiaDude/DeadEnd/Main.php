@@ -42,9 +42,16 @@ public function onLobbyJoin(PlayerJoinEvent $event){
    $this->getServer()->broadcastMessage("Too many players in lobby");
   }
 }
-if($timer = $done){
- $players->teleport(140.4,9,118.4,$arena);
- $this->getServer()->broadcastMessage("The Game has started!"):
+public function LobbyTimer(PlayerJoinEvent $event){
+$lobby = $this->getConfig()->get("DeadEnd-lobby");
+  $arena = $this->getConfig()->get("DeadEndArena");
+  $players = count($this->getServer()->getLevelByName($lobby)->getPlayers());
+$x = $this->getConfig()->get("seconds");
+  $done = $this->getServer()->getScheduler()->scheduleRepeatingTask($timer, 300);
+$timer = new Timer($this);
+  if($timer >= $done){
+    $players->teleport(140.4,9,118.4,$arena);
+ $this->getServer()->broadcastMessage("The Game has started!");
 }
 }
     public function onCommand(CommandSender $sender, Command $cmd, $label,array $args){
