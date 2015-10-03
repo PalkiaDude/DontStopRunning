@@ -93,7 +93,6 @@ $timer = new Timer($this);
 }
   if($block->getId() === Block::GOLD_BLOCK){
   $event->$player->$pos->setBlock(new Vector3($x, $y, $z), Block::get(0))  
-  }
 }
 
    public function onArenaJoin($event PlayerJoinEvent){
