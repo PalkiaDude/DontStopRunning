@@ -43,8 +43,9 @@ public function onLobbyJoin(PlayerJoinEvent $event){
   }
 }
 if($timer = $done){
- $players->teleport(140.4,9,118.4,$arena)
- $this->getServer()->broadcastMessage("The Game has started!")
+ $players->teleport(140.4,9,118.4,$arena);
+ $this->getServer()->broadcastMessage("The Game has started!"):
+}
 }
     public function onCommand(CommandSender $sender, Command $cmd, $label,array $args){
         if(strtolower($cmd->getName()) === "DeadEnd-join"){
