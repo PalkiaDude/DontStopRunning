@@ -92,9 +92,9 @@ $timer = new Timer($this);
  $player->$pos->setBlock = $ev->getPlayer()->getLevel()->getBlock($ev->getPlayer()->floor()->subtract(0, 1));
 }
   if($block->getId() === Block::GOLD_BLOCK){
-  $event->$player->$pos->setBlock(new Vector3($x, $y, $z), Block::get(0)) }
+  $event->$player->$pos->setBlock(new Vector3($x, $y, $z), Block::get(0)) 
 }
-
+}
    public function onArenaJoin($event PlayerJoinEvent){
     $arena = this->getConfig()->
     $players = count($this->getServer()->getLevelByName($lobby)->getPlayers());    
