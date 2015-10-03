@@ -21,11 +21,13 @@ $this->saveDefaultConfig();
 }
 public function onLobbyJoin(PlayerJoinEvent $event){
   $lobby = $this->getConfig()->get("DeadEnd-lobby");
+  $arena = $this->getConfig()->get("DeadEndArena");
   $players = count($this->getServer()->getLevelByName($lobby)->getPlayers());
   $min = $this->getConfig()->get("min-players");
-  $max = $this->getConfig()->get("max-players");
+   $max = $this->getConfig()->get("max-players");
   $x = $this->getConfig()->get("seconds");
-  if($players >= $min){
+  $done $this->getServer()->getScheduler()->scheduleRepeatingTask($timer, 300);
+  if($players >= $min){  
    $timer = new Timer($this);
    $h = $this->getServer()->getScheduler()->scheduleRepeatingTask($timer, 20);
    $this->timer[$timer->getTaskId] = $timer->getTaskId();
@@ -40,6 +42,9 @@ public function onLobbyJoin(PlayerJoinEvent $event){
    $this->getServer()->broadcastMessage("Too many players in lobby");
   }
 }
+if($timer = $done){
+ $players->teleport(140.4,9,118.4,$arena)
+ $this->getServer()->broadcastMessage("The Game has started!")
 }
     public function onCommand(CommandSender $sender, Command $cmd, $label,array $args){
         if(strtolower($cmd->getName()) === "DeadEnd-join"){
@@ -78,15 +83,16 @@ public function onLobbyJoin(PlayerJoinEvent $event){
   if($block->getId() === Block::GOLD_BLOCK){
  $player->$pos->setBlock$block = $ev->getPlayer()->getLevel()->getBlock($ev->getPlayer()->floor()->subtract(0, 1));
   if($block->getId() === Block::GOLD_BLOCK){
-  $event->$player->$pos->setBlock(new Vector3($x, $y, $z), Block::get(0))  }
-};
+  $event->$player->$pos->setBlock(new Vector3($x, $y, $z), Block::get(0))  
+}
   }
 }
 
    public function onArenaJoin($event PlayerJoinEvent){
-    $arena = this->getConfig()->get("DeadEndArena");
+    $arena = this->getConfig()->
     $players = count($this->getServer()->getLevelByName($lobby)->getPlayers());    
-    
+    $event->$players->addPlayer()
+}
 
     
    public function onDeath(PlayerDeathEvent $event){
