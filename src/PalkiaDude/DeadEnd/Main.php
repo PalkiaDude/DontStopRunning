@@ -32,7 +32,7 @@ public function onLobbyJoin(PlayerJoinEvent $event){
    $h = $this->getServer()->getScheduler()->scheduleRepeatingTask($timer, 20);
    $this->timer[$timer->getTaskId] = $timer->getTaskId();
    for($x; ; $x--){
-    $this->getServer)->broadcastMessage("Game starting in" . $x);
+    $this->getServer())->broadcastMessage("Game starting in" . $x);
    }
   }
   elseif($players < $min){
