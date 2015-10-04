@@ -54,27 +54,19 @@ $timer = new Timer($this);
  $this->getServer()->broadcastMessage("The Game has started!");
 }
 }
-    public function onCommand(CommandSender $sender, Command $cmd, $label,array $args){
-        if(strtolower($cmd->getName()) === "DeadEnd-join"){
-            if($sender instanceof Player){
-                if($this->isPlayer($sender)){
-                    $this->removePlayer($sender);
-                    $sender->sendMessage(TextFormat::GOLD . "You have left DeadEnd. Do /hub to go to hub.");
-                    return true;
+public function onInteract(PlayerInteractEvent $event) {
+        $player = $event->getPlayer();
+        $sign = $event->getPlayer()->getLevel()->getTile($event->getBlock());
+        if($event->getBlock()->getId() == 63 or $event->getBlock()->getId() == 68) {
+            if($sign instanceof Sign) {
+                $signtext = $sign->getText();
+                if(TextFormat::clean($signtext[0]) === "[DeadEnd]") {
+    $player->teleport()
+                    
                 }
-                else{
-                    $this->addPlayer($sender);
-                    $sender->sendMessage(TextFormat::GREEN . "You have joined DeadEnd. Only use this when in Arena.");
-                    return true;
-                }
-            }
-            else{
-                $sender->sendMessage(TextFormat::RED . "Please use this command in-game.");
-                return true;
             }
         }
-    }
-    public function addPlayer(Player $player){
+    }    public function addPlayer(Player $player){
         $this->players[$player->getName()] = $player->getName();
     }
     public function isPlayer(Player $player){
@@ -97,7 +89,7 @@ $timer = new Timer($this);
 }
    public function onArenaJoin($event PlayerJoinEvent){
     $arena = this->getConfig()->
-    $players = count($this->getServer()->getLevelByName($lobby)->getPlayers());    
+    $players = count($this->getServer()->getLevelByName("DeadEndArena")->getPlayers());    
     $event->$players->addPlayer()
 }
 
