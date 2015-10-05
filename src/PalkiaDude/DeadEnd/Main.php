@@ -61,8 +61,8 @@ public function onInteract(PlayerInteractEvent $event) {
             if($sign instanceof Sign) {
                 $signtext = $sign->getText();
                 if(TextFormat::clean($signtext[0]) === "[DeadEnd]") {
-    $player->teleport(126.3,5,128.3,DeadEnd-l0bby)
-    $player->sendMessage(TextFormat::GOLD."You entered DeadEnd!")                 
+    $player->teleport(126.3,5,128.3,DeadEnd-l0bby);
+    $player->sendMessage(TextFormat::GOLD."You entered DeadEnd!");               
                 }
             }
         }
