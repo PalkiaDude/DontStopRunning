@@ -92,7 +92,7 @@ public function onInteract(PlayerInteractEvent $event) {
 }
 
    public function onArenaJoin(PlayerJoinEvent $event){
-    $arena = this->getConfig()->get("DeadEndArena");
+    $arena = $this->getConfig()->get("DeadEndArena");
     $players = count($this->getServer()->getLevelByName("DeadEndArena")->getPlayers());    
     $event->$players->addPlayer();
 }
