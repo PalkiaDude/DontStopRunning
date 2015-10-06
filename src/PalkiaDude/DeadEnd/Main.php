@@ -84,20 +84,20 @@ public function onInteract(PlayerInteractEvent $event) {
  $player->$pos->setBlock = $ev->getPlayer()->getLevel()->getBlock($ev->getPlayer()->floor()->subtract(0, 1));
 }
   if($block->getId() === Block::GOLD_BLOCK){
-  $event->$player->$pos->setBlock(new Vector3($x, $y, $z), Block::get(0)) 
+  $event->$player->$pos->setBlock(new Vector3($x, $y, $z), Block::get(0)) ;
      }
 }
 
    public function onArenaJoin($event PlayerJoinEvent){
     $arena = this->getConfig()->
     $players = count($this->getServer()->getLevelByName("DeadEndArena")->getPlayers());    
-    $event->$players->addPlayer()
+    $event->$players->addPlayer();
 }
    public function getWinner($event PlayerDeathEvent){
    $targetlevel = $event->getTarget();
     $players = count($this->getServer()->getLevelByName("DeadEndArena")->getPlayers());
    if($targetlevel->$players > 10){
-    $event->$players->broadcastMessage("10 runners are alive and running!")
+    $event->$players->broadcastMessage("10 runners are alive and running!");
    }
    if($targetlevel->$players > 1){
     $event->$players->broadcastMessage("We have a winner!");
@@ -110,8 +110,7 @@ public function onInteract(PlayerInteractEvent $event) {
    public function onDeath(PlayerDeathEvent $event){
     $player = $event->getPlayer();   
     $event->$player->removePlayer();
-   $player->sendMessage(TextFormat::RED."You are out of the game!")
-                                   
+   $player->sendMessage(TextFormat::RED."You are out of the game!");                             
            }
 }
    
