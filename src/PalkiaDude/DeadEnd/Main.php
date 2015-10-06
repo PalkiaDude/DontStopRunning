@@ -23,14 +23,13 @@ public $timer = [];
 $this->saveDefaultConfig();    
 }
 public function onLobbyJoin(PlayerJoinEvent $event){
-  $lobby = $this->getConfig()->get("DeadEnd-lobby");
-  $arena = $this->getConfig()->get("DeadEndArena");
+  $lobby = $this->getWorlds()->get("DeadEnd-lobby");
+  $arena = $this->getWorlds()->get("DeadEndArena");
+  $targetlevel = $event->getTarget();
   $players = count($this->getServer()->getLevelByName($lobby)->getPlayers());
-  $min = $this->getConfig()->get("min-players");
-   $max = $this->getConfig()->get("max-players");
-  $x = $this->getConfig()->get("seconds");
+  $timer = new Timer($this(
   $done = $this->getServer()->getScheduler()->scheduleRepeatingTask($timer, 300);
-  if($players >= $min){  
+  if($targetlevel->$players > 10){  
    $timer = new Timer($this);
    $h = $this->getServer()->getScheduler()->scheduleRepeatingTask($timer, 20);
    $this->timer[$timer->getTaskId] = $timer->getTaskId();
@@ -38,18 +37,18 @@ public function onLobbyJoin(PlayerJoinEvent $event){
     $this->getServer()->broadcastMessage("Game starting in" . $x);
    }
   }
-  elseif($players < $min){
+  elseif($targetlevel->$players > 5){
    $this->getServer()->broadcastMessage("Waiting for more people");
   }
-  elseif($players > $max){
+  elseif($targetlevel->$players > 23){
    $this->getServer()->broadcastMessage("Too many players in lobby");
   }
 }
 public function LobbyTimer(PlayerJoinEvent $event){
-$lobby = $this->getConfig()->get("DeadEnd-lobby");
-  $arena = $this->getConfig()->get("DeadEndArena");
+$lobby = $this->getWorlds()->get("DeadEnd-lobby");
+  $arena = $this->getWorlds()->get("DeadEndArena");
   $players = count($this->getServer()->getLevelByName($lobby)->getPlayers());
-$x = $this->getConfig()->get("seconds");
+$x = $this->get()->get("seconds");
   $done = $this->getServer()->getScheduler()->scheduleRepeatingTask($timer, 300);
 $timer = new Timer($this);
   if($timer >= $done){
@@ -92,7 +91,7 @@ public function onInteract(PlayerInteractEvent $event) {
 }
 
    public function onArenaJoin(PlayerJoinEvent $event){
-    $arena = $this->getConfig()->get("DeadEndArena");
+    $arena = $this->getServer()->getLevelByName("DeadEndArena");
     $players = count($this->getServer()->getLevelByName("DeadEndArena")->getPlayers());    
     $event->$players->addPlayer();
 }
