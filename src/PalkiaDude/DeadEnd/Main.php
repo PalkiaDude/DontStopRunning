@@ -7,6 +7,8 @@ use pocketmine\utils\TextFormat;
 use pocketmine\math\Vector3;
 use pocketmine\block\Block;
 use pocketmine\event\player\PlayerMoveEvent;
+use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\Player;
 use pocketmine\plugin\Plugin;
 use pocketmine\level\Position;
