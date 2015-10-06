@@ -92,6 +92,18 @@ public function onInteract(PlayerInteractEvent $event) {
     $players = count($this->getServer()->getLevelByName("DeadEndArena")->getPlayers());    
     $event->$players->addPlayer()
 }
+   public function getWinner($event PlayerDeathEvent){
+   $targetlevel = $event->getTarget();
+    $players = count($this->getServer()->getLevelByName("DeadEndArena")->getPlayers());
+   if($targetlevel->$players > 10){
+    $event->$players->broadcastMessage("10 runners are alive and running!")
+   }
+   if($targetlevel->$players > 1){
+    $event->$players->broadcastMessage("We have a winner!");
+    $event->$players->teleport(260.4,5,19.3,Spawn);
+   }
+   }
+
 
     
    public function onDeath(PlayerDeathEvent $event){
