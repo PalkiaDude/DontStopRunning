@@ -9,6 +9,7 @@ use pocketmine\block\Block;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\player\PlayerDeathEvent
 use pocketmine\Player;
 use pocketmine\plugin\Plugin;
 use pocketmine\level\Position;
@@ -90,12 +91,12 @@ public function onInteract(PlayerInteractEvent $event) {
      }
 }
 
-   public function onArenaJoin($event PlayerJoinEvent){
+   public function onArenaJoin(PlayerJoinEvent $event){
     $arena = this->getConfig()->
     $players = count($this->getServer()->getLevelByName("DeadEndArena")->getPlayers());    
     $event->$players->addPlayer();
 }
-   public function getWinner($event PlayerDeathEvent){
+   public function getWinner(PlayerDeathEvent $event){
    $targetlevel = $event->getTarget();
     $players = count($this->getServer()->getLevelByName("DeadEndArena")->getPlayers());
    if($targetlevel->$players > 10){
