@@ -9,7 +9,7 @@ use pocketmine\block\Block;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerInteractEvent;
-use pocketmine\event\player\PlayerDeathEvent
+use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\Player;
 use pocketmine\plugin\Plugin;
 use pocketmine\level\Position;
