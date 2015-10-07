@@ -27,7 +27,8 @@ public function onLobbyJoin(PlayerJoinEvent $event){
   $arena = $this->getWorlds()->get("DeadEndArena");
   $targetlevel = $event->getTarget();
   $players = count($this->getServer()->getLevelByName($lobby)->getPlayers());
-  $timer = new Timer($this(
+  $timer = new Timer($this);
+  $x = 240;
   $done = $this->getServer()->getScheduler()->scheduleRepeatingTask($timer, 300);
   if($targetlevel->$players > 10){  
    $timer = new Timer($this);
@@ -40,7 +41,7 @@ public function onLobbyJoin(PlayerJoinEvent $event){
   elseif($targetlevel->$players > 5){
    $this->getServer()->broadcastMessage("Waiting for more people");
   }
-  elseif($targetlevel->$players > 23){
+  elseif($targetlevel->$players > 11){
    $this->getServer()->broadcastMessage("Too many players in lobby");
   }
 }
@@ -48,7 +49,6 @@ public function LobbyTimer(PlayerJoinEvent $event){
 $lobby = $this->getWorlds()->get("DeadEnd-lobby");
   $arena = $this->getWorlds()->get("DeadEndArena");
   $players = count($this->getServer()->getLevelByName($lobby)->getPlayers());
-$x = $this->get()->get("seconds");
   $done = $this->getServer()->getScheduler()->scheduleRepeatingTask($timer, 300);
 $timer = new Timer($this);
   if($timer >= $done){
