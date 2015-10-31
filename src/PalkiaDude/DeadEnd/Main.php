@@ -50,12 +50,11 @@ public function FullLobby(PlayerJoinEvent $event){
   $targetlevel = $event->getTarget();
   $players = count($this->getServer()->getLevelByName($lobby)->getPlayers());
    if($targetlevel->$players > 10){
-      $sign = if($event->getBlock()->getId() == 63 or $event->getBlock()->getId() == 68) {
+      $sign = getBlock()->getId() == 63 or getBlock()->getId() == 68;
             if($sign instanceof Sign) {
                 $signtext = $sign->getText();
        if(TextFormat::clean($signtext[0]) === "[DeadEnd]") {  
      $event->setLine(1,"GAME IS FULL!")
-       }
             }
       }
    }
