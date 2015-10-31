@@ -54,7 +54,7 @@ public function FullLobby(PlayerJoinEvent $event){
             if($sign instanceof Sign) {
                 $signtext = $sign->getText();
        if(TextFormat::clean($signtext[0]) === "[DeadEnd]") {  
-     $event->setLine(1,"GAME IS FULL!")
+     $event->setLine(1,"GAME IS FULL!");
             }
       }
    }
