@@ -55,6 +55,11 @@ public function FullLobby(PlayerJoinEvent $event){
                 $signtext = $sign->getText();
        if(TextFormat::clean($signtext[0]) === "[DeadEnd]") {  
      $event->setLine(1,"GAME IS FULL!")
+       }
+            }
+      }
+   }
+}
       
 public function LobbyTimer(PlayerJoinEvent $event){
 $lobby = $this->getWorlds()->get("DeadEnd-lobby");
