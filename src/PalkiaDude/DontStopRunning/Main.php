@@ -1,5 +1,5 @@
 <?php
-namespace PalkiaDude\DeadEnd;
+namespace PalkiaDude\DontStopRunning;
 use pocketmine\Server;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
@@ -23,8 +23,9 @@ public $timer = [];
 $this->saveDefaultConfig();    
 }
 public function onLobbyJoin(PlayerJoinEvent $event){
-  $lobby = $this->getWorlds()->get("DeadEnd-lobby");
-  $arena = $this->getWorlds()->get("DeadEndArena");
+  $server = $this->getServer();
+  $lobby = $this->$server->getDataPath(). "worlds/DeadEnd-lobby";
+  $arena = $this->$server->getDataPath(). "worlds/DeadEndArena";
   $targetlevel = $event->getTarget();
   $players = count($this->getServer()->getLevelByName($lobby)->getPlayers());
   $timer = new Timer($this);
@@ -46,7 +47,8 @@ public function onLobbyJoin(PlayerJoinEvent $event){
   }
 }
 public function FullLobby(PlayerJoinEvent $event){
-    $lobby = $this->getWorlds()->get("DeadEnd-lobby");
+     $server = $this->getServer();
+    $lobby = $this->$server->getDataFolder(). "worlds/DeadEnd-lobby";
   $targetlevel = $event->getTarget();
   $players = count($this->getServer()->getLevelByName($lobby)->getPlayers());
    if($targetlevel->$players > 10){
@@ -61,8 +63,9 @@ public function FullLobby(PlayerJoinEvent $event){
 }
       
 public function LobbyTimer(PlayerJoinEvent $event){
-$lobby = $this->getWorlds()->get("DeadEnd-lobby");
-  $arena = $this->getWorlds()->get("DeadEndArena");
+$server = $this->getServer();
+$lobby = $this->$server->getDataFolder(). "worlds/DeadEnd-lobby";
+  $arena = $this->$server->getDataFolder(). "worlds/DeadEndArena";
   $players = count($this->getServer()->getLevelByName($lobby)->getPlayers());
   $done = $this->getServer()->getScheduler()->scheduleRepeatingTask($timer, 300);
 $timer = new Timer($this);
@@ -78,7 +81,7 @@ public function onInteract(PlayerInteractEvent $event) {
             if($sign instanceof Sign) {
                 $signtext = $sign->getText();
                 if(TextFormat::clean($signtext[0]) === "[DeadEnd]") {
-    $player->teleport(126.3,5,128.3,DeadEnd-l0bby);
+    $player->teleport(126.3,5,128.3,DeadEnd-lobby);
     $player->sendMessage(TextFormat::GOLD."You entered DeadEnd!");               
                 }
             }
