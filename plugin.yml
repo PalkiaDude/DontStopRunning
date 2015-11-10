@@ -5,8 +5,5 @@ api: [1.13.0]
 description: A minigame where you endlessly run as the floor is dropping below you!
 main: PalkiaDude\DontStopRunning\Main
 
-commands:
-  setArenaWorld:
-     description:"Sets Arena World."
     
     
