@@ -21,6 +21,8 @@ public $timer = [];
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->getLogger()->info(TextFormat::GREEN . "Dead-End Minigame by PalkiaDude!");
 $this->saveDefaultConfig();    
+$this->getServer()->loadLevel("DeadEndArena");
+$this->getServer()->loadLevel("DeadEnd-lobby");
 }
 public function onLobbyJoin(PlayerJoinEvent $event){
   $server = $this->getServer();
