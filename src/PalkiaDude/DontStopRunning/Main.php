@@ -19,15 +19,15 @@ class Main extends PluginBase implements Listener{
 public $timer = [];
      public function onEnable(){
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->getLogger()->info(TextFormat::GREEN . "Dead-End Minigame by PalkiaDude!");
+        $this->getLogger()->info(TextFormat::GREEN . "DontStopRunning had officially been loaded!");
 $this->saveDefaultConfig();    
-$this->getServer()->loadLevel("DeadEndArena");
-$this->getServer()->loadLevel("DeadEnd-lobby");
+$this->getServer()->loadLevel("DSRArena");
+$this->getServer()->loadLevel("DSRLobby");
 }
 public function onLobbyJoin(PlayerJoinEvent $event){
   $server = $this->getServer();
-  $lobby = $this->$server->getDataPath(). "worlds/DeadEnd-lobby";
-  $arena = $this->$server->getDataPath(). "worlds/DeadEndArena";
+  $lobby = $this->$server->getLevelByName("DSRLobby");
+  $arena = $this->$server->getLevelByName("DSRArena");
   $targetlevel = $event->getTarget();
   $players = count($this->getServer()->getLevelByName($lobby)->getPlayers());
   $timer = new Timer($this);
@@ -50,15 +50,15 @@ public function onLobbyJoin(PlayerJoinEvent $event){
 }
 public function FullLobby(PlayerJoinEvent $event){
      $server = $this->getServer();
-    $lobby = $this->$server->getDataFolder(). "worlds/DeadEnd-lobby";
+    $lobby = $this->$server->DSR;
   $targetlevel = $event->getTarget();
   $players = count($this->getServer()->getLevelByName($lobby)->getPlayers());
    if($targetlevel->$players > 10){
       $sign = getBlock()->getId() == 63 or getBlock()->getId() == 68;
             if($sign instanceof Sign) {
                 $signtext = $sign->getText();
-       if(TextFormat::clean($signtext[0]) === "[DeadEnd]") {  
-     $event->setLine(1,"GAME IS FULL!");
+       if(TextFormat::clean($signtext[0]) === "[DSR]") {  
+     $event->setLine(1,"FULL!");
             }
       }
    }
@@ -66,8 +66,8 @@ public function FullLobby(PlayerJoinEvent $event){
       
 public function LobbyTimer(PlayerJoinEvent $event){
 $server = $this->getServer();
-$lobby = $this->$server->getDataFolder(). "worlds/DeadEnd-lobby";
-  $arena = $this->$server->getDataFolder(). "worlds/DeadEndArena";
+$lobby = $this->$server->getLevelByName("DSRLobby")
+  $arena = $this->$server->getLevelByName("DSRArena")
   $players = count($this->getServer()->getLevelByName($lobby)->getPlayers());
   $done = $this->getServer()->getScheduler()->scheduleRepeatingTask($timer, 300);
 $timer = new Timer($this);
@@ -79,33 +79,27 @@ $timer = new Timer($this);
 public function onInteract(PlayerInteractEvent $event) {
         $player = $event->getPlayer();
         $sign = $event->getPlayer()->getLevel()->getTile($event->getBlock());
+        $arena = $event->getServer()->getLevelByName("DSRArena");
         if($event->getBlock()->getId() == 63 or $event->getBlock()->getId() == 68) {
             if($sign instanceof Sign) {
                 $signtext = $sign->getText();
-                if(TextFormat::clean($signtext[0]) === "[DeadEnd]") {
-    $player->teleport(126.3,5,128.3,DeadEnd-lobby);
-    $player->sendMessage(TextFormat::GOLD."You entered DeadEnd!");               
+                if(TextFormat::clean($signtext[0]) === "[DSR]")) {
+                     if(TextFormat::clean($signtext[1] === "Join!")
+    $player->teleport(126.3,5,128.3,$arena);
+    $player->sendMessage(TextFormat::GOLD."You joined the mayhem that is, DontStopRunning!");               
                 }
             }
         }
-    }    public function addPlayer(Player $player){
-        $this->players[$player->getName()] = $player->getName();
-    }
-    public function isPlayer(Player $player){
-        return in_array($player->getName(), $this->players);
-    }
-    public function removePlayer(Player $player){
-        unset($this->players[$player->getName()]);
-    }
+    }  
     public function onPlayerMove(PlayerMoveEvent $event){
         $player = $event->getPlayer();
         $level = $player->getLevel();
         $pos = new Vector3($player->getFloorX(), $player->getFloorY() - 1, $player->getFloorZ());
-        $block = $ev->getPlayer()->getLevel()->getBlock($ev->getPlayer()->floor()->subtract(0, 1));
-  if($block->getId() === Block::GOLD_BLOCK){
+       $arena = $this->getServer()->getLevelByName("DSRArena");
+  if($level === $arena){
  $player->$pos->setBlock = $ev->getPlayer()->getLevel()->getBlock($ev->getPlayer()->floor()->subtract(0, 1));
 }
-  if($block->getId() === Block::GOLD_BLOCK){
+  if($level === $arena){
   $event->$player->$pos->setBlock(new Vector3($x, $y, $z), Block::get(0)) ;
      }
 }
@@ -113,11 +107,11 @@ public function onInteract(PlayerInteractEvent $event) {
    public function onArenaJoin(PlayerJoinEvent $event){
     $arena = $this->getServer()->getLevelByName("DeadEndArena");
     $players = count($this->getServer()->getLevelByName("DeadEndArena")->getPlayers());    
-    $event->$players->addPlayer();
+
 }
    public function getWinner(PlayerDeathEvent $event){
    $targetlevel = $event->getTarget();
-    $players = count($this->getServer()->getLevelByName("DeadEndArena")->getPlayers());
+    $players = count($this->getServer()->getLevelByName("DSRArena)->getPlayers());
    if($targetlevel->$players > 10){
     $event->$players->broadcastMessage("10 runners are alive and running!");
    }
@@ -130,9 +124,9 @@ public function onInteract(PlayerInteractEvent $event) {
 
     
    public function onDeath(PlayerDeathEvent $event){
-    $player = $event->getPlayer();   
-    $event->$player->removePlayer();
-   $player->sendMessage(TextFormat::RED."You are out of the game!");                             
+    $player = $event->getPlayer(); 
+   $player->sendMessage(TextFormat::RED."You are out of the game!");  
+   $player->teleport(260.4,5,19.3,Spawn);
            }
 }
    
