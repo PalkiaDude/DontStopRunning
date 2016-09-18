@@ -5,5 +5,9 @@ api: [1.13.0]
 description: A minigame where you endlessly run as the floor is dropping below you!
 main: PalkiaDude\DontStopRunning\Main
 
-    
+    commands:
+      DSR:
+       description: "Command to join a game of DSR."
+       usafe: "/DSR"
+       permission: dontstoprunning.commands
     
