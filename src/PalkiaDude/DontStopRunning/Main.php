@@ -26,6 +26,29 @@ class Main extends PluginBase{
 
     return false;
 }
+    public function PlayerCount($event PlayerJoinEvent){
+         $level = getServer()->getLevelByName("DSRLobby");
+         $playercount = $event->$level->getOnlinePlayers();
+         $arenaspawn = getServer()->getLevelByName("DSRArena")->getSpawnLocation();
+         if($playercount === 1){
+              $playercount->sendMessage("Countdown to game starts when 3 more players have joined.");
+         }
+         if($playercount === 2){
+              $playercount->sendMessage("Countdown to game starts when 2 more players have joined.");
+         }
+         if($playercount === 3){
+              $playercount->sendMessage("Countdown to game starts when 1 more player has joined.");
+         }
+         if($playercount === 4){
+              
+         }
+         if($playercount === 5){
+              
+         }
+         if($playercount === 6){
+              $playercount->teleport($arenaspawn);
+         }
+    }
     public function PlayerMove($event PlayerMoveEvent){
          $player = $event->getPlayer();
          if($player->getLevel()->getName() === $this->getServer()->getLevelbyName("DSRArena")){
