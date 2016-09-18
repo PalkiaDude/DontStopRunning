@@ -7,6 +7,8 @@ use pocketmine\utils\TextFormat;
 use pocketmine\math\Vector3;
 use pocketmine\block\Block;
 use pocketmine\Player;
+use pocketmine\level\Level;
+use pocketmine\command\Command;
 class Main extends PluginBase{
      
      public function onEnable(){
@@ -16,7 +18,9 @@ class Main extends PluginBase{
      
      public function onCommand(CommandSender $sender, Command $command, $label, array $args){
     if(strtolower($command->getName()) === "DSR"){
-         $sender->teleport(//to set spawn coordinates of lobby);
+         $lobby = getServer()->getLevelbyName("DSRLobby");
+         $lobbyspawn = $lobby->getSpawnLocation();
+         $sender->teleport($lobby, $lobbyspawn);
         return true;
     }
 
@@ -25,12 +29,18 @@ class Main extends PluginBase{
     public function PlayerMove($event PlayerMoveEvent){
          $player = $event->getPlayer();
          if($player->getLevel()->getName() === $this->getServer()->getLevelbyName("DSRArena")){
-            \//to be done
+            $block = getId(0);  
+        $pos = new Vector3($player->getFloorX(), $player->getFloorY() - 1, $player->getFloorZ());
+        if($this->isPlayer($player)){
+            $event->setBlock($pos, $block);
          }
+    }
     }
     public function DeathSystem($event PlayerDeathEvent){
          $lives = 5;
          $player = $event->getPlayer();
+         $spawn = getServer()->getLevelByName("Spawn");
+         $spawnlocation = $spawn->getSpawnLocation();
          if($player->getLevel()->getName() === $this->getServer()->getLevelbyName("DSRArena")){
           if ($lives = 5){
               $event->$lives--;
@@ -51,7 +61,7 @@ class Main extends PluginBase{
           }
           if($lives = 1){
               $event->$lives--;
-              $player->teleport(//spawn but I'm too lazy right now);
+              $player->teleport($spawn, $spawnlocation);
               $player->sendMessage("You have lost the game. Better luck next time.");
           }
          }
