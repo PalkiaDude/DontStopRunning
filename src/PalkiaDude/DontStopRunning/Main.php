@@ -1,4 +1,7 @@
 <?php
+
+// YOU NEED TO HAVE A WORLD NAMED DSRWORLD AND DSRLOBBY.
+
 namespace PalkiaDude\DontStopRunning;
 use pocketmine\Server;
 use pocketmine\plugin\PluginBase;
@@ -12,7 +15,7 @@ use pocketmine\command\Command;
 class Main extends PluginBase{
      
      public function onEnable(){
-          $this->getLogger()->info("DontStopRunning v1 by DazAdam");
+          $this->getLogger()->info("DontStopRunning v2 by DazAdam");
    
      }
      
@@ -26,7 +29,7 @@ class Main extends PluginBase{
 
     return false;
 }
-    public function PlayerCount($event PlayerJoinEvent){
+    public function PlayerCount(PlayerJoinEvent $event){
          $level = getServer()->getLevelByName("DSRLobby");
          $playercount = $event->$level->getOnlinePlayers();
          $arenaspawn = getServer()->getLevelByName("DSRArena")->getSpawnLocation();
@@ -49,7 +52,7 @@ class Main extends PluginBase{
               $playercount->teleport($arenaspawn);
          }
     }
-    public function PlayerMove($event PlayerMoveEvent){
+    public function PlayerMove(PlayerMoveEvent $event)){
          $player = $event->getPlayer();
          if($player->getLevel()->getName() === $this->getServer()->getLevelbyName("DSRArena")){
             $block = getId(0);  
@@ -59,7 +62,7 @@ class Main extends PluginBase{
          }
     }
     }
-    public function DeathSystem($event PlayerDeathEvent){
+    public function DeathSystem(PlayerDeathEvent $event){
          $lives = 5;
          $player = $event->getPlayer();
          $spawn = getServer()->getLevelByName("Spawn");
