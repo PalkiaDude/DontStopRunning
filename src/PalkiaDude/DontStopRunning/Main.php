@@ -43,6 +43,7 @@ class Main extends PluginBase{
               $playercount->sendMessage("Countdown to game starts when 1 more player has joined.");
          }
          if($playercount === 4){
+              $playercount->sendMessage("50 seconds to game!");
               
          }
          if($playercount === 5){
@@ -51,6 +52,9 @@ class Main extends PluginBase{
          if($playercount === 6){
               $playercount->teleport($arenaspawn);
          }
+    }
+    public function onCompletion(Server $server){
+         
     }
     public function PlayerMove(PlayerMoveEvent $event)){
          $player = $event->getPlayer();
